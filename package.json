@@ -1,0 +1,17 @@
+{
+  "name": "downloader-hub",
+  "version": "1.0.0",
+  "description": "Installable Pinterest, YouTube, and TikTok downloader workspace",
+  "main": "main.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "start:web": "node server.js",
+    "start:desktop": "electron .",
+    "check": "node --check server.js && node --check main.js && node --check preload.js && node --check src/utils.js && node --check src/pinterest-service.js && node --check src/youtube-service.js && node --check src/tiktok-service.js && node --check src/platform-service.js && node --check src/yt-dlp-client.js && node --check src/download-manager.js && node --check renderer/browser-api.js && node --check renderer/pwa-manager.js && node --check renderer/app.js"
+  },
+  "dependencies": {
+    "electron": "41.0.1",
+    "yt-dlp-wrap": "^2.3.12"
+  }
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Downloader Hub</title>
+    <meta name="theme-color" content="#21342d" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Downloader Hub" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="/icons/icon-180.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-glow page-glow-left"></div>
+    <div class="page-glow page-glow-right"></div>
+
+    <div class="app-shell">
+      <section class="install-panel panel">
+        <div class="install-copy">
+          <p class="section-step">App Install</p>
+          <h2>Install on Home Screen</h2>
+          <p id="install-message" class="field-note">Install this tool on your home screen for faster access.</p>
+          <div class="inline-meta">
+            <span id="install-status" class="status-pill pending">Not Installed</span>
+            <span id="device-label" class="badge">Desktop</span>
+          </div>
+        </div>
+        <div class="install-actions">
+          <button id="install-app-btn" class="primary-btn" type="button" hidden>Install App</button>
+          <p id="ios-install-hint" class="field-note hidden">To install on iPhone or iPad: tap Share, then tap Add to Home Screen.</p>
+          <p id="offline-notice" class="field-note hidden">Internet is still required to fetch media, but the app shell is cached for faster offline opening.</p>
+          <p id="secure-context-note" class="field-note hidden">Install prompts and service workers need HTTPS in production. Localhost works for development.</p>
+        </div>
+      </section>
+
+      <div class="workspace">
+        <aside class="sidebar panel">
+          <div class="brand-block">
+            <p class="eyebrow">Installable PWA + Desktop</p>
+            <h1>Downloader Hub</h1>
+            <p class="field-note">One workspace for Pinterest photos, YouTube videos, TikTok posts, download history, and saved settings.</p>
+          </div>
+
+          <nav class="sidebar-nav" aria-label="Main menu">
+            <button class="menu-btn active" data-menu="home" type="button">Home</button>
+            <button class="menu-btn" data-menu="pinterest" type="button">Pinterest Photos &amp; Videos</button>
+            <button class="menu-btn" data-menu="youtube" type="button">YouTube Videos</button>
+            <button class="menu-btn" data-menu="tiktok" type="button">TikTok Videos</button>
+            <button class="menu-btn" data-menu="history" type="button">Download History</button>
+            <button class="menu-btn" data-menu="settings" type="button">Settings</button>
+          </nav>
+
+          <div class="sidebar-meta">
+            <div class="meta-card">
+              <span class="field-label">Runtime</span>
+              <strong id="runtime-label">Web</strong>
+              <span class="field-note">Desktop Electron and PWA flows share the same queue model.</span>
+            </div>
+          </div>
+        </aside>
+
+        <div class="content-column">
+          <header class="hero panel">
+            <div class="hero-copy">
+              <p id="hero-step" class="section-step">Home</p>
+              <h2 id="hero-title">Multi-platform downloader workspace</h2>
+              <p id="hero-lead" class="lead">Switch between Pinterest, YouTube, and TikTok downloaders, keep history in one place, and install the app for faster access.</p>
+              <div class="inline-meta">
+                <span id="hero-platform-badge" class="badge">Hub</span>
+                <span id="hero-save-badge" class="status-pill pending">Browser Downloads</span>
+              </div>
+            </div>
+
+            <div class="hero-stats">
+              <article class="stat-card accent">
+                <span class="stat-label">Queue</span>
+                <strong id="queue-count">0</strong>
+                <span id="queue-detail" class="stat-detail">Nothing queued yet</span>
+              </article>
+              <article class="stat-card">
+                <span class="stat-label">Completed</span>
+                <strong id="completed-count">0</strong>
+                <span id="completed-detail" class="stat-detail">Saved items</span>
+              </article>
+              <article class="stat-card">
+                <span class="stat-label">Failed</span>
+                <strong id="failed-count">0</strong>
+                <span id="failed-detail" class="stat-detail">Needs retry</span>
+              </article>
+              <article class="stat-card">
+                <span class="stat-label">Speed</span>
+                <strong id="speed-count">0 B/s</strong>
+                <span id="remaining-count" class="stat-detail">0 remaining</span>
+              </article>
+            </div>
+          </header>
+
+          <div id="message-banner" class="message-banner hidden"></div>
+          <main id="page-content" class="page-content"></main>
+        </div>
+      </div>
+    </div>
+
+    <script src="./browser-api.js"></script>
+    <script src="./pwa-manager.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
